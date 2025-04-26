@@ -18,8 +18,8 @@ return function (ContainerBuilder $containerBuilder) {
                 'level' => Logger::DEBUG,
             ],
             'db' => [
-                'host' => 'mysql:host=127.0.0.1;',
-                'name' => 'dbname=example',
+                'host' => 'db',
+                'name' => 'practicalGains',
                 'user' => 'root',
                 'password' => 'password',
                 'debug' => true
