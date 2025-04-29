@@ -5,6 +5,7 @@ use App\Controllers\CoursesAPIController;
 use Slim\App;
 use Slim\Views\PhpRenderer;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
+use App\Controllers\UsersController;
 
 return function (App $app) {
     $container = $app->getContainer();
@@ -15,7 +16,12 @@ return function (App $app) {
         $renderer = $container->get(PhpRenderer::class);
         return $renderer->render($response, "index.php", $args);
     });
+    $app->get('/register', function ($request, $response) use ($container) {
+        $renderer = $container->get(PhpRenderer::class);
+        return $renderer->render($response, "registration.phtml");
+    });
 
     $app->get('/courses', CoursesAPIController::class);
+    $app->get('/users', UsersController::class);
 
 };

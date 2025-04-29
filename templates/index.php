@@ -29,5 +29,14 @@
 <h1>Slim</h1>
 <div>a microframework for PHP</div>
     <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
+<?PHP
+if (!empty($usersArray))
+{
+    foreach ($usersArray as $user)
+    {
+        echo "<p>" . $user['userName'] . "</p>";
+    }
+}
+?>
 </body>
 </html>
