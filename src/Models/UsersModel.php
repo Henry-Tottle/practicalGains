@@ -19,4 +19,13 @@ class UsersModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function registerUser(string $userName, string $email, string $password)
+    {
+        $query = $this->db->prepare("INSERT INTO users (userName, email, hashedPassword) VALUES (?, ?, ?)");
+        $query->bindParam(1, $userName);
+        $query->bindParam(2, $email);
+        $query->bindParam(3, $password);
+        $query->execute();
+    }
 }

@@ -19,7 +19,8 @@ class UsersController
 
     public function __invoke($request, $response)
     {
-        $users = $this->usersModel->getUsers();
-        return $this->renderer->render($response, 'index.php', ['usersArray' =>$users]);
+        $message = $_SESSION['message'] ?? null;
+        unset($_SESSION['message']);
+        return $this->renderer->render($response, 'index.php', ['message' => $message]);
     }
 }

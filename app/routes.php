@@ -6,6 +6,7 @@ use Slim\App;
 use Slim\Views\PhpRenderer;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 use App\Controllers\UsersController;
+use App\Controllers\RegisterUserController;
 
 return function (App $app) {
     $container = $app->getContainer();
@@ -20,6 +21,7 @@ return function (App $app) {
         $renderer = $container->get(PhpRenderer::class);
         return $renderer->render($response, "registration.phtml");
     });
+    $app->post('/register', RegisterUserController::class);
 
     $app->get('/courses', CoursesAPIController::class);
     $app->get('/users', UsersController::class);

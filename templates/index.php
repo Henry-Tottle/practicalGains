@@ -26,17 +26,20 @@
     </style>
 </head>
 <body>
-<h1>Slim</h1>
-<div>a microframework for PHP</div>
-    <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
-<?PHP
-if (!empty($usersArray))
-{
-    foreach ($usersArray as $user)
-    {
-        echo "<p>" . $user['userName'] . "</p>";
-    }
-}
-?>
+<h1>Practical Gains</h1>
+<div>A small scale fitness tracker, to track your gains</div>
+<?php if (!empty($message)): ?>
+    <p class="notification"><?= htmlspecialchars($message) ?></p>
+<?php endif; ?>
+<form method="post" action="/login">
+    <label>
+        Email: <input type="email" name="email">
+    </label>
+    <label>
+        <input type="password" name="password">
+    </label>
+    <input type="submit" value="Log In">
+</form>
+<a href="http://localhost:8080/register">Register new user</a>
 </body>
 </html>
