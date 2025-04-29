@@ -13,7 +13,7 @@
 <?php if (!empty($message)): ?>
     <p class="notification"><?= htmlspecialchars($message) ?></p>
 <?php endif; ?>
-<form method="post" action="/register">
+<form method="post" action="/login">
     <div class="mb-3">
         <label for="email" class="form-label">Email:</label>
         <input type="email" class="form-control w-50 mx-auto" id="email" name="email">

@@ -22,10 +22,16 @@ class UsersModel
 
     public function registerUser(string $userName, string $email, string $password)
     {
-        $query = $this->db->prepare("INSERT INTO users (userName, email, hashedPassword) VALUES (?, ?, ?)");
-        $query->bindParam(1, $userName);
-        $query->bindParam(2, $email);
-        $query->bindParam(3, $password);
-        $query->execute();
+        $query = $this->db->prepare("INSERT INTO users (userName, email, hashedPassword) VALUES (:userName, :email, :password)");
+
+        $query->execute(['userName' => $userName, 'email' => $email, 'password' => $password]);
+    }
+
+    public function getUserByEmail(string $email)
+    {
+        $query = $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $query->execute(['email'=>$email]);
+        return $query->fetch();
+
     }
 }
