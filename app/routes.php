@@ -19,7 +19,8 @@ return function (App $app) {
     });
     $app->get('/register', function ($request, $response) use ($container) {
         $renderer = $container->get(PhpRenderer::class);
-        return $renderer->render($response, "registration.phtml");
+        $message = $_SESSION['message'] ?? null;
+        return $renderer->render($response, "registration.phtml", ['message'=>$message]);
     });
     $app->post('/register', RegisterUserController::class);
 

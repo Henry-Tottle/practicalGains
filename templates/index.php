@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <title>Slim 4</title>
-    <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-    <style>
-        body {
-            margin: 50px 0 0 0;
-            padding: 0;
-            width: 100%;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            text-align: center;
-            color: #aaa;
-            font-size: 18px;
-        }
-
-        h1 {
-            color: #719e40;
-            letter-spacing: -3px;
-            font-family: 'Lato', sans-serif;
-            font-size: 100px;
-            font-weight: 200;
-            margin-bottom: 0;
-        }
-    </style>
+    <?PHP include(__DIR__.'/partials/head.html'); ?>
 </head>
 <body>
-<h1>Practical Gains</h1>
-<div>A small scale fitness tracker, to track your gains</div>
+<h1 class="text-center bg-light-subtle w-50 mx-auto my-0">Practical Gains</h1>
+<h2 class="text-center bg-light-subtle w-50 mx-auto my-0">A small scale fitness tracker, to track your gains</h2>
+
+<?php include(__DIR__.'/partials/navBar.html'); ?>
+<div class="border border-4 border-primary-subtle rounded-4 w-50 mx-auto text-center p-5 bg-light-subtle">
+
 <?php if (!empty($message)): ?>
     <p class="notification"><?= htmlspecialchars($message) ?></p>
 <?php endif; ?>
-<form method="post" action="/login">
-    <label>
-        Email: <input type="email" name="email">
-    </label>
-    <label>
-        <input type="password" name="password">
-    </label>
-    <input type="submit" value="Log In">
+<form method="post" action="/register">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control w-50 mx-auto" id="email" name="email">
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control w-50 mx-auto" id="password" name="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
 </form>
 <a href="http://localhost:8080/register">Register new user</a>
+</div>
 </body>
 </html>

@@ -21,7 +21,8 @@ class RegisterUserController
         $email = trim($data['email']) ?? '';
         $password = trim($data['password']) ?? '';
         if (empty($name) || empty($email) || empty($password)) {
-            return $this->renderer->render($response->withHeader('Location', '/register')->withStatus(302), 'registrations.phtml',['message'=>'Please fill out all fields']);
+            $_SESSION['message'] = 'Please fill in all fields';
+            return $this->renderer->render($response->withHeader('Location', '/register')->withStatus(302), 'registration.phtml',['message'=>'Please fill out all fields']);
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

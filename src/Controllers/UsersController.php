@@ -20,7 +20,9 @@ class UsersController
     public function __invoke($request, $response)
     {
         $message = $_SESSION['message'] ?? null;
-        unset($_SESSION['message']);
+        if (isset($_SESSION['message'])) {
+            unset($_SESSION['message']);
+        }
         return $this->renderer->render($response, 'index.php', ['message' => $message]);
     }
 }
