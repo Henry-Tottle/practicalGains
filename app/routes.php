@@ -8,6 +8,7 @@ use Slim\Views\PhpRenderer;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 use App\Controllers\UsersController;
 use App\Controllers\RegisterUserController;
+use App\Controllers\GetExercisesByUserID;
 
 return function (App $app) {
     $container = $app->getContainer();
@@ -33,16 +34,7 @@ return function (App $app) {
 
     $app->get('/users', UsersController::class);
 
-    $app->get('/dashboard', function ($request, $response, $args) use ($container)
-    {
-        $renderer = $container->get(PhpRenderer::class);
-        if (!isset($_SESSION['user_id']))
-        {
-            $_SESSION['message'] = "You must be logged in to access this page!";
-            return $response->withHeader('Location', '/')->withStatus(302);
-        }
-        return $renderer->render($response, "dashboard.phtml", $args);
-    });
+    $app->get('/dashboard', GetExercisesByUserID::class);
 
     $app->post('/logout', function ($request, $response)
     {

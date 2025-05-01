@@ -5,7 +5,14 @@
 </head>
 <body>
 <?PHP include(__DIR__.'/partials/navBar.html') ?>
-<h1>This is the dashboard</h1>
+<?PHP $user = explode(' ',$exercises[0]['userName']); ?>
+<div class="bg-light">
+<h2>Hi <?= $user[0] ?> </h2>
+<?php foreach ($exercises as $exercise): ?>
+    <p><?= htmlspecialchars($exercise['exercise']) ?> | Reps: <?= $exercise['reps'] ?> | Sets: <?= $exercise['sets'] ?></p>
+<?php endforeach;
+var_dump($exercises); ?>
+</div>
 <form method="post" action="/logout">
     <input type="submit" value="log out">
 </form>
