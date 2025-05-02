@@ -5,13 +5,42 @@
 </head>
 <body>
 <?PHP include(__DIR__.'/partials/navBar.html') ?>
-<?PHP $user = explode(' ',$exercises[0]['userName']); ?>
 <div class="bg-light">
-<h2>Hi <?= $user[0] ?> </h2>
-<?php foreach ($exercises as $exercise): ?>
-    <p><?= htmlspecialchars($exercise['exercise']) ?> | Reps: <?= $exercise['reps'] ?> | Sets: <?= $exercise['sets'] ?></p>
-<?php endforeach;
-var_dump($exercises); ?>
+<h2>Hi <?= $username['userName'] ?> </h2>
+    <table class="table table-striped">
+        <caption>List of exercises of logged in user</caption>
+        <tr>
+            <th>Name of Exercise</th>
+            <th>Reps</th>
+            <th>Sets</th>
+            <th>Weight (kg)</th>
+            <th>Height (in)</th>
+            <th>Difficulty</th>
+            <th>Date</th>
+            <th>Notes?</th>
+        </tr>
+        <?PHP
+        foreach ($exercises as $exercise) {
+            empty($exercise['weight_kg']) ? $weight = '-' : $weight = $exercise['weight_kg'];
+            empty($exercise['height_in']) ? $height = '-' : $height = $exercise['height_in'];
+            empty($exercise['notes']) ? $notes = '-' : $notes = 'See more';
+        ?>
+            <tr>
+                <td><?= $exercise['exercise']?></td>
+                <td><?= $exercise['reps']?></td>
+                <td><?= $exercise['sets']?></td>
+                <td><?= $weight ?></td>
+                <td><?= $height?></td>
+                <td><?= $exercise['difficulty']?></td>
+                <td><?= $exercise['date']?></td>
+                <td><?= $notes?></td>
+            </tr>
+            <?PHP
+        }
+        ?>
+    </table>
+
+
 </div>
 <form method="post" action="/logout">
     <input type="submit" value="log out">

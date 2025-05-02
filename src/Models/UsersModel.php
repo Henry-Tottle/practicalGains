@@ -20,6 +20,13 @@ class UsersModel
         return $query->fetchAll();
     }
 
+    public function getUserById(int $id)
+    {
+        $query = $this->db->prepare("SELECT `userName` FROM users WHERE id = :id");
+        $query->execute(['id' => $id]);
+        return $query->fetch();
+    }
+
     public function registerUser(string $userName, string $email, string $password)
     {
         $query = $this->db->prepare("INSERT INTO users (userName, email, hashedPassword) VALUES (:userName, :email, :password)");
