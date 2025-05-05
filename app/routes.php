@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use App\Controllers\CoursesAPIController;
 use App\Controllers\LoginUserController;
 use Slim\App;
 use Slim\Views\PhpRenderer;
@@ -12,8 +11,6 @@ use App\Controllers\GetExercisesByUserID;
 
 return function (App $app) {
     $container = $app->getContainer();
-
-    //demo code - two ways of linking urls to functionality, either via anon function or linking to a controller
 
     $app->get('/', function ($request, $response, $args) use ($container)
     {
@@ -29,8 +26,6 @@ return function (App $app) {
     $app->post('/register', RegisterUserController::class);
 
     $app->post('/login', LoginUserController::class);
-    // check this route and delete soon as it was part of skeleton
-    $app->get('/courses', CoursesAPIController::class);
 
     $app->get('/users', UsersController::class);
 
