@@ -7,11 +7,9 @@ use Slim\Views\PhpRenderer;
 class RegisterUserController
 {
     private UsersModel $usersModel;
-    private PhpRenderer $renderer;
-    public function __construct(UsersModel $usersModel, PhpRenderer $renderer)
+    public function __construct(UsersModel $usersModel)
     {
         $this->usersModel = $usersModel;
-        $this->renderer = $renderer;
     }
 
     public function __invoke($request, $response)
