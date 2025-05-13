@@ -20,17 +20,20 @@ class RegisterUserController
         $name = trim($data['username']) ?? '';
         $email = trim($data['email']) ?? '';
         $password = trim($data['password']) ?? '';
+
         if (empty($name) || empty($email) || empty($password)) {
             $_SESSION['message'] = 'Please fill in all fields';
-            return $this->renderer->render($response->withHeader('Location', '/register')->withStatus(302), 'registration.phtml',
-                ['message'=>'Please fill out all fields']);
+            return $response
+                ->withHeader('Location', '/register')
+                ->withStatus(302);
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $this->usersModel->registerUser($name, $email, $hashedPassword);
         $_SESSION['message'] = 'Registration successful';
-        return $response->withHeader('Location', '/users')->withStatus(302);
 
-
+        return $response
+            ->withHeader('Location', '/users')
+            ->withStatus(302);
     }
 }

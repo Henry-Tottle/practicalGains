@@ -53,4 +53,21 @@ class RegisterUserControllerTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['/users'], $result->getHeader('Location'));
     }
 
+    public function testInvalidRegistrationRedirectsToRegisterUsers()
+    {
+        $request = $this->createMock(ServerRequestInterface::class);
+        $response = new Response();
+
+        $request->method('getParsedBody')->willReturn([
+            'username'=>'',
+            'email'=>'henry@henry.com',
+            'password'=>'password123'
+        ]);
+
+        $result = $this->controller->__invoke($request, $response);
+
+        $this->assertEquals(302, $result->getStatusCode());
+        $this->assertEquals(['/register'], $result->getHeader('Location'));
+    }
+
 }
