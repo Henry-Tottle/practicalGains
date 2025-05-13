@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\RegisterUserControllerTest::testInvalidRegistrationRedirectsToRegisterUsers":8},"times":{"Tests\\RegisterUserControllerTest::testValidRegistrationRedirectsToUsers":0.105,"Tests\\RegisterUserControllerTest::testInvalidRegistrationRedirectsToRegisterUsers":0}}

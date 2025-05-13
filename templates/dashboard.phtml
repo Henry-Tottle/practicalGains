@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php include(__DIR__.'/partials/head.html') ?>
+</head>
+<body>
+<?php include(__DIR__ . '/partials/navBarLoggedIn.html') ?>
+
+<div class="container py-4 bg-light min-vh-100">
+    <div class="mb-4">
+        <h2 class="text-center">Hi <?= htmlspecialchars($username['userName']) ?> 👋</h2>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover align-middle text-center">
+            <caption class="text-start">List of exercises of logged-in user</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Name of Exercise</th>
+                <th>Reps</th>
+                <th>Sets</th>
+                <th>Weight (kg)</th>
+                <th>Height (in)</th>
+                <th>Difficulty</th>
+                <th>Date</th>
+                <th>Notes?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($exercises as $exercise){
+                $weight = empty($exercise['weight_kg']) ? '-' : $exercise['weight_kg'];
+                $height = empty($exercise['height_in']) ? '-' : $exercise['height_in'];
+                $notes = empty($exercise['notes']) ? '-' : 'See more';
+                ?>
+                <tr>
+                    <td><?= htmlspecialchars($exercise['exercise']) ?></td>
+                    <td><?= htmlspecialchars($exercise['reps']) ?></td>
+                    <td><?= htmlspecialchars($exercise['sets']) ?></td>
+                    <td><?= htmlspecialchars($weight) ?></td>
+                    <td><?= htmlspecialchars($height) ?></td>
+                    <td><?= htmlspecialchars($exercise['difficulty']) ?></td>
+                    <td><?= htmlspecialchars($exercise['date']) ?></td>
+                    <td><?= htmlspecialchars($notes) ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?PHP include(__DIR__ . '/partials/exerciseForm.html') ?>
+    <?PHP if(!empty($_SESSION['message']))
+    {
+        echo '<p class="text-center">'. $_SESSION['message'] . '</p>';
+    }?>
+    <div class="text-center mt-4">
+        <form method="post" action="/logout">
+            <button type="submit" class="btn btn-outline-danger">Log out</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

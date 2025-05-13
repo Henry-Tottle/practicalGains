@@ -1,0 +1,25 @@
+<div class="exercise-form">
+    <div class="exercise-form-header">
+        <h2>Exercise Form</h2>
+    </div>
+    <div class="exercise-form-body container ">
+        <form method="POST" action="/insertExercise" class="exercise-form-body d-flex flex-column align-items-center justify-content-center ">
+            <label class="my-3">Exercise Name*: <input type="text" name="name" required></label>
+            <label class="my-3">Exercise Reps*: <input type="number" name="reps" step="1" required></label>
+            <label class="my-3">Exercise Sets: <input type="number" name="sets" step="1"></label>
+            <label class="my-3">Exercise Weight: <input type="number" name="weight_kg" step="0.5"></label>
+            <label class="my-3">Exercise Height: <input type="number" name="height_in" step="1"></label>
+            <label class="my-3">Exercise Difficulty: <select name="difficulty">
+                    <option>Easy</option>
+                    <option>Moderate</option>
+                    <option>Hard</option>
+                </select></label>
+            <label class="my-3">Notes: <input type="text" name="notes"></label>
+            <label class="my-3">Date*: <input type="date" name="date" required></label>
+            <input type="submit" value="Submit" class="submit my-3">
+        </form>
+
+    </div>
+</div>
+
+<!--Next job is to turn this into a template called exerciseForm or something, then it can be used for editing as well as inserting-->
